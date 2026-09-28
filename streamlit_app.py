@@ -186,7 +186,7 @@ with st.expander("ℹ️ Recordatorio del proceso", expanded=True):
         - **Línea:** {CAMPOS_FIJOS['LÍNEA']}
         - **Producto:** {CAMPOS_FIJOS['PRODUCTO']}
         - **Solución:** hipoclorito de sodio
-        - **Concentración mínima:** > 200 ppm — **tiempo mínimo:** 5 min
+        - **Concentración mínima:** > 200 ppm — **tiempo mínimo:** 3 min
         - Si la concentración es inferior al LC: preparar nuevamente la solución y desinfectar de nuevo.
         - Si el tiempo fue inferior al LC: enjuagar y desinfectar nuevamente.
         """
@@ -216,12 +216,12 @@ else:
         "Comentario de acción correctiva", placeholder="Escribe el comentario...", key=f"accion_{k}"
     )
 
-ejecutor = st.text_input("Ejecutor (Supervisor de Calidad)", placeholder="Nombre completo", key=f"ejecutor_{k}")
+ejecutor = st.text_input("Ejecutor", placeholder="Nombre completo", key=f"ejecutor_{k}")
 supervisor_calidad = st.text_input(
-    "Supervisor Calidad que registró", placeholder="Nombre completo", key=f"supervisor_calidad_{k}"
+    "Personal Calidad que registró", placeholder="Nombre completo", key=f"supervisor_calidad_{k}"
 )
 producto_stbx = st.text_input(
-    "Producto STBX a trabajar", placeholder="Producto para el que se usarán estas naranjas", key=f"producto_stbx_{k}"
+    "Producto a trabajar", placeholder="Producto para el que se usarán estas naranjas", key=f"producto_stbx_{k}"
 )
 
 st.divider()
@@ -235,7 +235,7 @@ with col_guardar:
         elif not supervisor_calidad.strip():
             st.error("Por favor ingresa el nombre del Supervisor de Calidad antes de guardar.")
         elif not producto_stbx.strip():
-            st.error("Por favor ingresa el producto STBX a trabajar antes de guardar.")
+            st.error("Por favor ingresa el producto a trabajar antes de guardar.")
         elif not dejar_sin_comentario and not accion_correctiva.strip():
             st.error("Escribe un comentario de acción correctiva o marca la casilla para dejarlo vacío.")
         else:
